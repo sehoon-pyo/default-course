@@ -18,7 +18,7 @@ const band: Layer[] = [
   { id: "tab", type: "shape", x: 0, y: 64, w: 58, h: 106, viewBox: { w: 58, h: 106 }, path: "M0 0 L58 53 L0 106 Z", fill: "primary" },
 ];
 
-const contentTitle: TextSlot = { id: "title", type: "title", x: 58, y: 28, w: 1656, h: 73, size: 48, color: "#ffffff", anchor: "middle" };
+const contentTitle: TextSlot = { id: "title", type: "title", x: 75, y: 28, w: 1639, h: 73, size: 48, color: "#ffffff", anchor: "middle" };
 
 export default defineMaster({
   tokens: {
@@ -110,7 +110,7 @@ export default defineMaster({
     },
 
     /** 제목만 있는 컨텐츠. 본문은 슬라이드가 자유롭게 배치한다. */
-    "title-only": {
+    "content-title-only": {
       decorations: band,
       slots: [contentTitle, { id: "free", type: "free", x: 53, y: 206, w: 1815, h: 770, size: 48 }],
     },
@@ -118,13 +118,15 @@ export default defineMaster({
     /**
      * section 구분(소제목). PPTX(2_Agent_View_기반_병렬_개발_r7.pptx)의 "챕터 슬라이드"를 옮긴 것이다.
      * 주색 라벨에 `SECTION n`을 쓰고(슬롯 label), 아래에 제목과 설명을 둔다.
+     * 세 슬롯의 글자 시작선(x)을 라벨 상자의 왼쪽 끝(197.5)에 맞춘다. PPTX의 상자 좌표는 안쪽 여백(14.4px)을 포함하므로
+     * 제목과 설명은 상자 x에 여백을 더하고 폭에서 뺀 값이다. 설명 색은 PPTX의 bg2(E7E6E6)를 25%로 어둡게 한 회색이다.
      */
-    section: {
-      decorations: [{ id: "label-box", type: "shape", x: 197.5, y: 326.3, w: 273.8, h: 68, viewBox: { w: 273.8, h: 68 }, path: "M0 0 H273.8 V68 H0 Z", fill: "primary" }],
+    "section-divider": {
+      decorations: [{ id: "label-box", type: "shape", x: 197.5, y: 342.3, w: 273.8, h: 68, viewBox: { w: 273.8, h: 68 }, path: "M0 0 H273.8 V68 H0 Z", fill: "primary" }],
       slots: [
-        { id: "label", type: "free", x: 197.5, y: 326.3, w: 273.8, h: 68, size: 36, color: "#ffffff", align: "center", anchor: "middle" },
-        { id: "title", type: "title", x: 178.5, y: 406.4, w: 1656, h: 150, size: 80, color: "primary", anchor: "middle" },
-        { id: "desc", type: "body", x: 190, y: 551, w: 1598, h: 53, size: 40, color: "#1D9BE6", anchor: "top" },
+        { id: "label", type: "free", x: 197.5, y: 342.3, w: 273.8, h: 68, size: 36, color: "#ffffff", align: "center", anchor: "middle" },
+        { id: "title", type: "title", x: 197.5, y: 422.4, w: 1622.5, h: 150, size: 104, color: "primary", anchor: "middle" },
+        { id: "desc", type: "body", x: 197.5, y: 558.2, w: 1576.7, h: 38.6, size: 40, color: "#3B3939", anchor: "top" },
       ],
     },
 

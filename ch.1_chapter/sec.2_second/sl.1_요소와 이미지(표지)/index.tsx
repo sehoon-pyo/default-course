@@ -2,13 +2,13 @@ import { Paragraph, Slide, Title } from "../../../elements";
 
 const text = {
   label: "SECTION 2",
-  title: "두 번째 section",
-  desc: "이 section에서 다룰 내용을 한 줄로 쓴다",
+  title: "요소와 이미지",
+  desc: "Chip, PromptBox와 마스터가 쓰는 이미지",
 };
 
 export default function SectionDivider() {
   return (
-    <Slide layout="section">
+    <Slide layout="section-divider">
       <Paragraph slot="label" value={text.label} />
       <Title value={text.title} />
       <Paragraph value={text.desc} />

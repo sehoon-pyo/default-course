@@ -1,8 +1,8 @@
 import { Paragraph, Slide, Title } from "../../elements";
 
 const text = {
-  title: "강의 제목",
-  subtitle: "부제 또는 chapter 이름",
+  title: "default 마스터 미리보기",
+  subtitle: "마스터의 layout, 색, 요소를 실제 슬라이드로 확인한다",
 };
 
 export default function ChapterTitle() {

@@ -12,17 +12,24 @@
 3. course-maker에서 `npm run dev`를 실행하면 미리보기의 강의 목록에 나타납니다.
 
 ## 들어 있는 것
-| 슬라이드 | layout | 설명 |
+| 슬라이드 | layout | 보여 주는 것 |
 |---|---|---|
-| `sl.1_title` | `title` | 대제목 |
-| `sl.2_toc` | `toc` | 목차 (section으로 자동으로 채움) |
-| `sec.N/sl.1_divider` | `section` | section 구분(소제목) |
-| `sec.N/sl.2_content` | `content` | 제목과 본문 |
-| `sec.N/sl.3_title-only` | `title-only` | 제목만 있고 본문은 자유 배치 (`IconChip` 예시) |
+| `sl.1_표지` | `title` | 대제목 |
+| `sl.2_목차` | `toc` | 목차 (section으로 자동으로 채움) |
+| `sec.1/sl.1_색과 글자(표지)`, `sec.2/sl.1_요소와 이미지(표지)` | `section-divider` | section 구분(소제목) |
+| `sec.1/sl.2_본문 글자, 뱃지, 코드` | `content` | 본문 글자, 뱃지, 코드 |
+| `sec.1/sl.3_공통 색` | `content-title-only` | 공통 색 6개 (토큰 이름 표기) |
+| `sec.2/sl.2_layout 목록` | `content` | layout 목록 |
+| `sec.2/sl.3_칩과 프롬프트 상자` | `content-title-only` | `IconChip`(파일 이름으로 아이콘 선택, 생략하면 글자만), `PromptBox`(claude 아이콘) |
+| `sec.2/sl.4_이미지` | `content-title-only` | 마스터와 강의가 쓰는 이미지 |
+
+슬라이드 폴더 이름은 `sl.{번호}_{슬라이드 이름}` 형식이고, 슬라이드 이름이 사이드바에 그대로 보입니다. 순서의 기준은 번호가 아니라 `meta.ts`의 배열입니다.
+
+이 chapter는 마스터를 실제 슬라이드로 확인하는 미리보기이다. 내 강의를 만들 때는 내용을 바꾸거나 지운다.
 
 - 순서는 `meta.ts`의 배열이 정합니다. chapter, section, slide를 추가하면 폴더와 상위 `meta.ts`의 배열을 둘 다 고칩니다.
-- `masters/default/`가 슬라이드의 디자인(색, 크기, layout)을 정합니다. layout은 `title`, `content`, `title-only`, `section`, `toc`입니다.
-- `elements/IconChip.tsx`는 앞에 이미지가 붙는 칩입니다. `assets/icon-default.svg`가 기본 이미지이고, `icon`으로 바꿀 수 있습니다.
+- `masters/default/`가 슬라이드의 디자인(색, 크기, layout)을 정합니다. layout은 `title`, `content`, `content-title-only`, `section-divider`, `toc`입니다.
+- `elements/IconChip.tsx`는 앞에 이미지가 붙는 칩입니다. `icon`에 `assets/`의 파일 이름(`icon-claude.svg`, `icon-terminal.svg` 등)을 주면 그 이미지가 붙고, 생략하면 아이콘 없이 글자만 있는 칩이 됩니다. `icon-claude.svg`, `icon-terminal.svg`는 `courses/sample`에서 옮겼습니다.
 - `export/`는 내보내기 산출물이 쌓이는 폴더이며 git이 추적하지 않습니다.
 
 ## 확인하지 못한 것
